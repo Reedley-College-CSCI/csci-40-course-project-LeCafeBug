@@ -12,8 +12,13 @@
 
 using namespace std;
 
-int main() {
+void testIngredientClass();
 
+int main() {
+    cout << "place holder name of progam" << endl;
+    cout << "-==±==-∞-===±∆±===-∞-==±==-" << endl;
+    
+    testIngredientClass();
 
 
 
