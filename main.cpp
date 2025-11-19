@@ -8,6 +8,7 @@
 */
 
 #include <iostream>
+#include "Ingredients.h"
 
 using namespace std;
 
