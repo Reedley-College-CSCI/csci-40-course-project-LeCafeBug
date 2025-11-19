@@ -1,0 +1,26 @@
+Item ,Ingredient,Quantity,Unit
+Conchas,Flour,500,G
+Conchas,Sugar,100,G
+Conchas,Eggs,1,Count
+Conchas,Yeast,50,G
+Conchas,Butter,90,G
+Cookies ,Flour,300,G
+Cookies ,Sugar,150,G
+Cookies ,Eggs,2,Count
+Cookies ,Yeast,10,G
+Cookies ,Butter,175,G
+Donuts,Flour,370,G
+Donuts,Sugar,150,G
+Donuts,Eggs,1,Count
+Donuts,Yeast,8,G
+Donuts,Butter,120,G
+Muffins,Flour,250,G
+Muffins,Sugar,78,G
+Muffins,Eggs,4,Count
+Muffins,Yeast,40,G
+Muffins,Butter,20,G
+Rosca,Flour,500,G
+Rosca,Sugar,198,G
+Rosca,Eggs,3,Count
+Rosca,Yeast,15,G
+Rosca,Butter,200,G
