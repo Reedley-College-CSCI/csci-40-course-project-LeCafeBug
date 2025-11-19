@@ -1,5 +1,5 @@
-#ifndef INGREDIENTS.H
-#define INGREDIENTS.H
+#ifndef INGREDIENTS_H
+#define INGREDIENTS_H
 
 #include <string>
 
