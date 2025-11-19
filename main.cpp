@@ -1,13 +1,21 @@
 // CSCI-40 Final Project
-// Author: [Your Name Here]
+// Author: Edgar Jarquin
 
 /* 
  * Description:
  *
+ * 
 */
 
 #include <iostream>
 
+using namespace std;
+
 int main() {
+
+
+
+
+    
     return 0;
 }
