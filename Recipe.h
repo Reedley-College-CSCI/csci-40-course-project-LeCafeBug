@@ -11,6 +11,16 @@ using namespace std;
  * 
 */
 
+//struct for vector list of Ingredients
+struct RecipeIngredients {
+    string name;
+    double quantity;
+    string unit;
+
+    RecipeIngredients( string n, double q, string u  );
+
+};
+
 class Recipe {            
 
 private:
@@ -18,11 +28,13 @@ private:
     double prepTime;       
     double bakeTime;      
     int batchSize;        
-    int yeidCount;
+    int yeildCount;
+
+    vector<RecipeIngredients> Ingredient;
 
 public:
     // Constructor to set object info
-    Recipe(string name, double prepTime, double bakeTime, int batch, int yeilld);
+    Recipe(string name, double prepTime, double bakeTime, int batch, int yeild);
 
     const string getRecName();
     const double getPrepTime();
@@ -33,6 +45,12 @@ public:
     //might need a print function too
 
     const double getTotalTime(); 
+
+    const vector<RecipeIngredients>& const getIngredient();
+
+    //for testing might need
+    const int getIngredientCount();
+    void addIngredient(string name, double quantity, string unit);
 };
 
 #endif
