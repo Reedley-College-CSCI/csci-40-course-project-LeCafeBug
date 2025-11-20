@@ -57,5 +57,21 @@ void testRecipeClass() {
     cout << "Total Time: " << conchas.getTotalTime() << " hours" << endl;
     cout << "Total: " << conchas.getBatchSize() << " batches of " << conchas.getYeildCount() << conchas.getRecName() << endl << endl;
 
+    //test struct vector on conchas
+    cout << "Initial ingredient count: " << conchas.getIngredientCount() << endl;
+
+    conchas.addIngredient("Flour", 500, "G");
+    conchas.addIngredient("Sugar", 100, "g");
+    conchas.addIngredient("Eggs", 1, "Count");
+    
+    cout << "After adding: " << conchas.getIngredientCount() << endl;
+    
+    const vector<RecipeIngredients>& ingredients = conchas.getIngredient();
+    cout << "Ingredients list:" << endl;
+    for (const auto& ing : ingredients) {
+        cout << " - " << ing.name << ": " << ing.quantity << " " << ing.unit << endl;
+    }
+    cout << endl;
+
     cout << "=≠= Testing for Recipe class done =≠=" << endl;
 }
