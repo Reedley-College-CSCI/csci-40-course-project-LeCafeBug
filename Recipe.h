@@ -46,7 +46,7 @@ public:
 
     const double getTotalTime(); 
 
-    const vector<RecipeIngredients>& const getIngredient();
+    vector<RecipeIngredients>& getIngredient();
 
     //for testing might need
     const int getIngredientCount();

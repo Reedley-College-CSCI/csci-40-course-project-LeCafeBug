@@ -46,7 +46,7 @@ const double Recipe::getTotalTime() {
 void Recipe::addIngredient(string name, double quantity, string unit) {
     Ingredient.push_back(RecipeIngredients( name, quantity, unit ));
 }
-const vector<RecipeIngredients>& const Recipe::getIngredient() {
+vector<RecipeIngredients>& Recipe::getIngredient() {
     return Ingredient;
 }
 const int Recipe::getIngredientCount() {
