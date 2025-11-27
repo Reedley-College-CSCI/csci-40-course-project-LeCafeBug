@@ -5,6 +5,8 @@
  * Description:
  *
  * Add instruciton on how to open with CMake
+ * 
+ * clean up lines -====...
 */
 
 #include <iostream>
@@ -13,10 +15,14 @@
 
 using namespace std;
 
+//functions 
+void createAndLoadIngredients();
+void createAndLoadRecipes();
+void createAndLoadObjects();
+
 //test functions
 void testIngredientClass();
 void testRecipeClass();
-void createAndLoadObjects();
 
 int main() {
     cout << "place holder name" << endl;
