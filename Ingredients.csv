@@ -1,6 +1,6 @@
-Item ,Price,Quantity,Unit 
+Item,Price,Quantity,Unit 
 Flour,9.99,10,Lbs
-Sugar ,3.99,4,Lbs
+Sugar,3.99,4,Lbs
 Eggs,6.99,12,Count
 Yeast,7.99,16,Oz
 Butter,5.99,2,Lbs

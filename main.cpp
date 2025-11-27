@@ -7,6 +7,8 @@
  * Add instruciton on how to open with CMake
  * 
  * clean up lines -====...
+ * 
+ * add test for create load and add/make config file
 */
 
 #include <iostream>

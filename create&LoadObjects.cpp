@@ -4,8 +4,9 @@
 #include <fstream>
 #include <iostream>
 
-
 using namespace std;
+
+// need to test if works / update test file 
 
 void createAndLoadObjects(){
     createAndLoadIngrediants();
@@ -28,7 +29,7 @@ void createAndLoadIngrediants(){
         exit(1);
         }
 
-    //skipe first line
+    //skip first line
     string line;
     getline(ingredientsFile,line);
 
@@ -66,8 +67,50 @@ void createAndLoadRecipes(){
     Recipe cookies("Cookies", 0.0, 0.0, 0, 0);
     Recipe donuts("Donuts", 0.0, 0.0, 0, 0);
     Recipe muffins("Muffins", 0.0, 0.0, 0, 0);
-    Recipe Roscas("Roscas", 0.0, 0.0, 0, 0);
+    Recipe roscas("Roscas", 0.0, 0.0, 0, 0);
 
+    ifstream recipesFile("Recipes.csv");
+    if (!recipesFile.is_open()) {
+        cout << "ERROR! Cannot open or find Recipes.csv" << endl;
+        exit(1);
+    }
 
+    //skip first line
+    string line;
+    getline(recipesFile, line);
 
+    string name;
+    double prepTime, bakeTime;
+    int batchSize, yieldCount;
+    char com;
+
+    while (recipesFile >> name >> com >> prepTime >> com >> bakeTime >> 
+           com >> batchSize >> com >> yieldCount) {
+        
+        // Remove characters
+        if (!name.empty() && name.back() == '\r') {
+            name.pop_back();
+            }
+        
+        if (name == "Conchas" || name == "conchas") {
+            conchas = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
+            }
+        else if (name == "Cookies" || name == "cookies") {
+            cookies = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
+            }
+        else if (name == "Donuts" || name == "donuts") {
+            donuts = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
+            }
+        else if (name == "Muffins" || name == "muffins") {
+            muffins = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
+            }
+        else if (name == "Roscas" || name == "roscas") {
+            roscas = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
+            }
+        else {
+            cout << "ERROR: Unknown recipe in file: " << name << endl;
+            exit(2);
+            }
+    }
+    recipesFile.close();
 }
