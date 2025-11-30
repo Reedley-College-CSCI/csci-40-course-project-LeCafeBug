@@ -8,22 +8,23 @@ using namespace std;
 
 // need to test if works / update test file 
 
-void createAndLoadObjects(){
-    createAndLoadIngrediants();
-    createAndLoadRecipes();
-    
+void createAndLoadIngredients(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
+void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
+
+
+void createAndLoadObjects(
+    Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
+    Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas)
+    {
+    createAndLoadIngrediants(flour, sugar, eggs, yeast, butter);
+    createAndLoadRecipes(conchas, cookies, donuts, muffins, roscas);
+
     cout << "Ingrediant and Recipe data loaded." << endl << endl;
 }
 
-void createAndLoadIngrediants(){
+void createAndLoadIngrediants(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter){
   //Ingredient objects
-    Ingredient flour("Flour", 0.0, 0.0, "NA");
-    Ingredient sugar("Sugar", 0.0, 0.0, "NA");
-    Ingredient eggs("Eggs", 0.0, 0.0, "NA");
-    Ingredient yeast("Yeast", 0.0, 0.0, "NA");
-    Ingredient butter("Butter", 0.0, 0.0, "NA");
-
-    ifstream ingredientsFile("Ingrediants.csv");
+    ifstream ingredientsFile("Ingredients.csv");
         if (!ingredientsFile.is_open()) {                                   //exception?
             cout << "ERROR! Cannot open or find Ingrediants.csv" << endl;
         exit(1);
@@ -61,14 +62,8 @@ void createAndLoadIngrediants(){
     ingredientsFile.close();
 }
 
-void createAndLoadRecipes(){
+void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas){
   //Recipe objects
-    Recipe conchas("Conchas", 0.0, 0.0, 0, 0);
-    Recipe cookies("Cookies", 0.0, 0.0, 0, 0);
-    Recipe donuts("Donuts", 0.0, 0.0, 0, 0);
-    Recipe muffins("Muffins", 0.0, 0.0, 0, 0);
-    Recipe roscas("Roscas", 0.0, 0.0, 0, 0);
-
     ifstream recipesFile("Recipes.csv");
     if (!recipesFile.is_open()) {
         cout << "ERROR! Cannot open or find Recipes.csv" << endl;
@@ -156,5 +151,10 @@ void createAndLoadRecipes(){
     }
 
     recipeIngredientsFile.close();
+
+}
+
+void loadUserConfigs(){
+
 
 }

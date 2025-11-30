@@ -9,6 +9,8 @@
  * clean up lines -====...
  * 
  * add test for create load and add/make config file
+ * 
+ * !!!need to fix abilty to use classes
 */
 
 #include <iostream>
@@ -18,9 +20,9 @@
 using namespace std;
 
 //functions 
-void createAndLoadIngredients();
-void createAndLoadRecipes();
-void createAndLoadObjects();
+void createAndLoadObjects(
+    Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
+    Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 
 //test functions
 void testIngredientClass();
@@ -30,11 +32,15 @@ int main() {
     cout << "place holder name" << endl;
     cout << "-==±==-∞-===±∆±===-∞-==±==-" << endl;
     
+    //object declartions
+    Ingredient flour, sugar, eggs, yeast, butter;
+    Recipe conchas, cookies, donuts, muffins, roscas;
+
     //test functions
     testIngredientClass();
     testRecipeClass();
     
-    cout << endl;
+    cout << flour.getPrice();
    
     
 
