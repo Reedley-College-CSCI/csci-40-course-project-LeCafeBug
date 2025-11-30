@@ -22,6 +22,7 @@ private:
 
 public:
     // Constructor to set object info
+    Ingredient();
     Ingredient(string name, double price, double quantity, string unit);
 
     const string getName();

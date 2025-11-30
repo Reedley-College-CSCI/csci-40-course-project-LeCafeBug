@@ -18,6 +18,13 @@ const string Ingredient::getUnit() {
     }
 
 //constructors 
+Ingredient::Ingredient(){
+    InName = "NA";
+    price = 0.0;
+    quantity = 0.0;
+    unit = "NA";
+}
+
 Ingredient::Ingredient( string n, double p, double q, string u ){
     InName = n;
     price = p;

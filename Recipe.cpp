@@ -23,7 +23,14 @@ const int Recipe::getYeildCount(){
 
 
 //constructors 
-Recipe::Recipe( string n, double prep, double bake, int batch,  int yeild){
+Recipe::Recipe(){
+    recName = "NA";
+    prepTime = 0.0;
+    bakeTime = 0.0;
+    batchSize = 0;
+    yeildCount = 0;
+}
+Recipe::Recipe(string n, double prep, double bake, int batch,  int yeild){
     recName = n;
     prepTime = prep;
     bakeTime = bake;
@@ -31,14 +38,16 @@ Recipe::Recipe( string n, double prep, double bake, int batch,  int yeild){
     yeildCount = yeild;
 }
 
-RecipeIngredients::RecipeIngredients( string n, double q, string u  ) {
+RecipeIngredients::RecipeIngredients(){
+    name = "NA";
+    quantity = 0.0;
+    unit = "NA";    
+}
+RecipeIngredients::RecipeIngredients(string n, double q, string u) {
     name = n;
     quantity = q;
-    unit = u;
-    }
-
-
-
+    unit = u;    
+}
 //functions
 const double Recipe::getTotalTime() {
         return prepTime + bakeTime;

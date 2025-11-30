@@ -17,12 +17,12 @@ struct RecipeIngredients {
     double quantity;
     string unit;
 
-    RecipeIngredients( string n, double q, string u  );
+    RecipeIngredients();
+    RecipeIngredients(string n, double q, string u);
 
 };
 
 class Recipe {            
-
 private:
     string recName;      // For the name of the recipe
     double prepTime;       
@@ -34,6 +34,7 @@ private:
 
 public:
     // Constructor to set object info
+    Recipe();
     Recipe(string name, double prepTime, double bakeTime, int batch, int yeild);
 
     const string getRecName();
