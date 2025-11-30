@@ -25,8 +25,8 @@ void createAndLoadObjects(
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 
 //test functions
-void testIngredientClass();
-void testRecipeClass();
+void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
+void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 
 int main() {
     cout << "place holder name" << endl;
@@ -36,11 +36,14 @@ int main() {
     Ingredient flour, sugar, eggs, yeast, butter;
     Recipe conchas, cookies, donuts, muffins, roscas;
 
+    createAndLoadObjects(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
+
     //test functions
-    testIngredientClass();
-    testRecipeClass();
+    testIngredientClass(flour, sugar, eggs, yeast, butter);
+    testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     
-    cout << flour.getPrice();
+
+    cout << endl << flour.getPrice() << endl;
    
     
 
