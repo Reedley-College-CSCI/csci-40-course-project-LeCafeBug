@@ -108,9 +108,53 @@ void createAndLoadRecipes(){
             roscas = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
             }
         else {
-            cout << "ERROR: Unknown recipe in file: " << name << endl;
+            cout << "ERROR! Unknown recipe in file: " << name << endl;
             exit(2);
             }
     }
     recipesFile.close();
+
+//Loading from recipe ingredient file
+    ifstream recipeIngredientsFile("Recipe.Ingredients.csv");
+    if (!recipeIngredientsFile.is_open()) {
+        cout << "ERROR! Cannot open or find Recipes.Ingredients.csv" << endl;
+        exit(1);
+    }
+    
+    getline(recipeIngredientsFile, line);
+
+    string recipeName, ingredientName, unit;
+    double quantityPR;               // Needed quantity per recipe
+
+
+    while (recipeIngredientsFile >> recipeName >> com >> ingredientName >> com >> quantityPR >> com >> unit) {
+        
+        // Remove characters
+        if (!name.empty() && name.back() == '\r') {
+            name.pop_back();
+            }
+        
+        if (recipeName == "Conchas" || recipeName == "conchas") {
+            conchas.addIngredient(ingredientName, quantityPR, unit);
+        }
+        else if (recipeName == "Cookies" || recipeName == "cookies") {
+            cookies.addIngredient(ingredientName, quantityPR, unit);
+        }
+        else if (recipeName == "Donuts" || recipeName == "donuts") {
+            donuts.addIngredient(ingredientName, quantityPR, unit);
+        }
+        else if (recipeName == "Muffins" || recipeName == "muffins") {
+            muffins.addIngredient(ingredientName, quantityPR, unit);
+        }
+        else if (recipeName == "Roscas" || recipeName == "roscas") {
+            roscas.addIngredient(ingredientName, quantityPR, unit);
+        }
+        else {
+            cout << "ERROR! Unknown recipe ingredient in file: " << recipeName << endl;
+            exit(2);
+        }
+    }
+
+    recipeIngredientsFile.close();
+
 }
