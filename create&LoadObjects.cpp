@@ -3,10 +3,9 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
-
-// need to test if works / update test file 
 
 void createAndLoadIngredients(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
 void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
@@ -16,29 +15,40 @@ void createAndLoadObjects(
     Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas)
     {
-    createAndLoadIngrediants(flour, sugar, eggs, yeast, butter);
+    createAndLoadIngredients(flour, sugar, eggs, yeast, butter);
     createAndLoadRecipes(conchas, cookies, donuts, muffins, roscas);
 
     cout << "Ingrediant and Recipe data loaded." << endl << endl;
 }
 
-void createAndLoadIngrediants(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter){
+void createAndLoadIngredients(Ingredient& flour, Ingredient& sugar, Ingredient& eggs, Ingredient& yeast, Ingredient& butter){
   //Ingredient objects
     ifstream ingredientsFile("Ingredients.csv");
         if (!ingredientsFile.is_open()) {                                   //exception?
             cout << "ERROR! Cannot open or find Ingrediants.csv" << endl;
-        exit(1);
+            exit(1);
         }
 
     //skip first line
     string line;
     getline(ingredientsFile,line);
 
-    string name, unit;
-    double price, quantity;
-    char com;
-
-    while(ingredientsFile >> name >> com >> price >> com >> quantity >> com >> unit) {
+    while(getline(ingredientsFile, line)) {
+        stringstream ss(line);
+        string name, priceStr, quantityStr, unit;
+        
+        getline(ss, name, ',');
+        getline(ss, priceStr, ',');
+        getline(ss, quantityStr, ',');
+        getline(ss, unit, ',');
+        
+        if (!name.empty() && name.back() == '\r') {
+            name.pop_back();
+            }
+        //change from string to correct data type
+        double price = stod(priceStr);
+        double quantity = stod(quantityStr);
+        
         if (name == "Flour" || name == "flour") {
             flour = Ingredient(name, price, quantity, unit); 
             }
@@ -67,26 +77,34 @@ void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Reci
     ifstream recipesFile("Recipes.csv");
     if (!recipesFile.is_open()) {
         cout << "ERROR! Cannot open or find Recipes.csv" << endl;
-        exit(1);
+        exit(3);
     }
 
     //skip first line
     string line;
     getline(recipesFile, line);
 
-    string name;
-    double prepTime, bakeTime;
-    int batchSize, yieldCount;
-    char com;
+    while (getline(recipesFile, line)) {
+        stringstream ss(line);
+        string name, prepTimeStr, bakeTimeStr, batchSizeStr, yieldCountStr;
 
-    while (recipesFile >> name >> com >> prepTime >> com >> bakeTime >> 
-           com >> batchSize >> com >> yieldCount) {
-        
+        getline(ss, name, ',');
+        getline(ss, prepTimeStr, ',');
+        getline(ss, bakeTimeStr, ',');
+        getline(ss, batchSizeStr, ',');
+        getline(ss, yieldCountStr, ',');
+
         // Remove characters
         if (!name.empty() && name.back() == '\r') {
             name.pop_back();
             }
-        
+            
+        //change from string to correct data type
+        double prepTime = stod(prepTimeStr);
+        double bakeTime = stod(bakeTimeStr);
+        int batchSize = stoi(batchSizeStr);
+        int yieldCount = stoi(yieldCountStr);
+
         if (name == "Conchas" || name == "conchas") {
             conchas = Recipe(name, prepTime, bakeTime, batchSize, yieldCount);
             }
@@ -104,7 +122,7 @@ void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Reci
             }
         else {
             cout << "ERROR! Unknown recipe in file: " << name << endl;
-            exit(2);
+            exit(4);
             }
     }
     recipesFile.close();
@@ -113,22 +131,28 @@ void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Reci
     ifstream recipeIngredientsFile("Recipe.Ingredients.csv");
     if (!recipeIngredientsFile.is_open()) {
         cout << "ERROR! Cannot open or find Recipes.Ingredients.csv" << endl;
-        exit(1);
+        exit(5);
     }
     
     getline(recipeIngredientsFile, line);
 
-    string recipeName, ingredientName, unit;
-    double quantityPR;               // Needed quantity per recipe
+    while (getline(recipeIngredientsFile, line)) {
+        stringstream ss(line);
+        string recipeName, ingredientName, quantityStr, unit;
+    
+    // Parse CSV line properly
+        getline(ss, recipeName, ',');
+        getline(ss, ingredientName, ',');
+        getline(ss, quantityStr, ',');
+        getline(ss, unit, ',');
 
-
-    while (recipeIngredientsFile >> recipeName >> com >> ingredientName >> com >> quantityPR >> com >> unit) {
-        
         // Remove characters
-        if (!name.empty() && name.back() == '\r') {
-            name.pop_back();
+        if (!recipeName.empty() && recipeName.back() == '\r') {
+            recipeName.pop_back();
             }
-        
+        //change from string to correct data type
+        double quantityPR = stod(quantityStr);
+
         if (recipeName == "Conchas" || recipeName == "conchas") {
             conchas.addIngredient(ingredientName, quantityPR, unit);
         }
@@ -146,7 +170,7 @@ void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Reci
         }
         else {
             cout << "ERROR! Unknown recipe ingredient in file: " << recipeName << endl;
-            exit(2);
+            exit(6);
         }
     }
 
@@ -154,7 +178,7 @@ void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Reci
 
 }
 
-void loadUserConfigs(){
+//void loadUserConfigs(){
 
 
-}
+//}

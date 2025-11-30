@@ -43,7 +43,7 @@ void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& m
     cout << "Prep Time: " << cookies.getPrepTime() << " hours" << endl;
     cout << "Bake Time: " << cookies.getBakeTime() << " hours" << endl;
     cout << "Total Time: " << cookies.getTotalTime() << " hours" << endl;
-    cout << "Total: " << cookies.getBatchSize() << " batches of " << cookies.getYeildCount() << cookies.getRecName() << endl << endl;
+    cout << "Total: " << cookies.getBatchSize() << " batches of " << cookies.getYeildCount() << " " << cookies.getRecName() << endl << endl;
 
     //test conchas
     cout << "- - Testing Conchas - -" << endl;
@@ -51,7 +51,7 @@ void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& m
     cout << "Prep Time: " << conchas.getPrepTime() << " hours" << endl;
     cout << "Bake Time: " << conchas.getBakeTime() << " hours" << endl;
     cout << "Total Time: " << conchas.getTotalTime() << " hours" << endl;
-    cout << "Total: " << conchas.getBatchSize() << " batches of " << conchas.getYeildCount() << conchas.getRecName() << endl << endl;
+    cout << "Total: " << conchas.getBatchSize() << " batches of " << conchas.getYeildCount() << " " << conchas.getRecName() << endl << endl;
 
     //test struct vector on conchas
 /*  Not needed rn ... future?  

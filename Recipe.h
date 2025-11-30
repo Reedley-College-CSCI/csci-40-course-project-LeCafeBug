@@ -46,7 +46,7 @@ public:
     //might need a print function too
 
     const double getTotalTime(); 
-
+//need a batch times yeild function for total count
     vector<RecipeIngredients>& getIngredient();
 
     //for testing might need
