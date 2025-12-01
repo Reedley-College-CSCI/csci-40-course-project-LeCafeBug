@@ -7,21 +7,21 @@
 
 using namespace std;
 
-void createAndLoadIngredients(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
-void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
+void loadIngredientsInfo(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
+void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 
 
-void createAndLoadObjects(
+void loadObjectsInfo(
     Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas)
     {
-    createAndLoadIngredients(flour, sugar, eggs, yeast, butter);
-    createAndLoadRecipes(conchas, cookies, donuts, muffins, roscas);
+    loadIngredientsInfo(flour, sugar, eggs, yeast, butter);
+    loadRecipeInfo(conchas, cookies, donuts, muffins, roscas);
 
     cout << "Ingrediant and Recipe data loaded." << endl << endl;
 }
 
-void createAndLoadIngredients(Ingredient& flour, Ingredient& sugar, Ingredient& eggs, Ingredient& yeast, Ingredient& butter){
+void loadIngredientsInfo(Ingredient& flour, Ingredient& sugar, Ingredient& eggs, Ingredient& yeast, Ingredient& butter){
   //Ingredient objects
     ifstream ingredientsFile("Ingredients.csv");
         if (!ingredientsFile.is_open()) {                                   //exception?
@@ -72,7 +72,7 @@ void createAndLoadIngredients(Ingredient& flour, Ingredient& sugar, Ingredient& 
     ingredientsFile.close();
 }
 
-void createAndLoadRecipes(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas){
+void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas){
   //Recipe objects
     ifstream recipesFile("Recipes.csv");
     if (!recipesFile.is_open()) {

@@ -20,7 +20,7 @@
 using namespace std;
 
 //functions 
-void createAndLoadObjects(
+void loadObjectsInfo(
     Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 
@@ -36,7 +36,7 @@ int main() {
     Ingredient flour, sugar, eggs, yeast, butter;
     Recipe conchas, cookies, donuts, muffins, roscas;
 
-    createAndLoadObjects(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
+    loadObjectsInfo(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
 
     //test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
