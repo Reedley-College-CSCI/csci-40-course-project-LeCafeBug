@@ -14,6 +14,7 @@
 */
 
 #include <iostream>
+#include <iomanip>
 #include "Ingredients.h"
 #include "Recipe.h"
 #include "Configurations.h"
@@ -41,14 +42,14 @@ int main() {
     Configurations config;
 
     loadObjectsInfo(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
-    // loadUserConfigs(config);
+    loadUserConfigs(config);
 
     //test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     testConfigClass(config);
 
-    cout << endl << flour.getPrice() << endl;
+    cout << endl << "DONE ALL" << endl;
    
     
 

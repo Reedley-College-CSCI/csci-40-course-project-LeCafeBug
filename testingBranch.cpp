@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Ingredients.h"
 #include "Recipe.h"
+#include "Configurations.h"
 
 using namespace std;
 
@@ -76,4 +77,56 @@ void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& m
     cout << endl;    
     
     cout << "=≠= Testing for Recipe class done =≠=" << endl;
+}
+
+void testConfigClass(Configurations& config) {
+    cout << "=±= Testing Configurations Class =±=" << endl << endl;
+
+    cout << "- - Testing Default Values - -" << endl;
+    // test config object
+    Configurations testConfig;
+    cout << "Default margins: " << endl;
+
+    for (int i = 0; i < testConfig.getMarginVectorSize(); i++) {
+        cout << "  ";
+        testConfig.displayMargin(i); 
+        cout << endl;
+    }
+    cout << endl;
+
+    cout << "- - Testing setMargin - -" << endl;
+    
+    cout << "Valid margins: " << endl;
+    testConfig.setMargin(0, 5);     // Set 0 to 5%
+    testConfig.setMargin(5, 45.0);  // Set Default to 45%
+    cout << "  ";
+    testConfig.displayMargin(0);
+    cout << endl;
+    cout << "  ";
+    testConfig.displayMargin(5);
+    cout << endl;
+
+    cout << "invalid margins: " << endl;
+    testConfig.setMargin(0, 0.0);  // Set 0 to 0%
+    testConfig.setMargin(5, 150);  // Set Default to 150%
+    cout << "  ";
+    testConfig.displayMargin(0);
+    cout << endl;
+    cout << "  ";
+    testConfig.displayMargin(5);
+    cout << endl;
+
+    cout << "- - Testing saveConfig - -" << endl;
+    testConfig.saveConfig();
+    cout << "1st number and last number in congif file should be 0.05 and .45" << endl;
+    cout << endl;
+    
+    //place stop here and look at file 
+
+    cout << "- - Undoing Save and Checking load- -" << endl;
+    config.saveConfig();
+    cout << "1st number and last number in congif file should be .3 and .26" << endl;
+    cout << endl;    
+    
+    cout << "=≠= Testing for Config class done =≠=" << endl;
 }
