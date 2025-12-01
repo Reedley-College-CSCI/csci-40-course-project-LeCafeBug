@@ -16,6 +16,7 @@
 #include <iostream>
 #include "Ingredients.h"
 #include "Recipe.h"
+#include "Configurations.h"
 
 using namespace std;
 
@@ -23,10 +24,12 @@ using namespace std;
 void loadObjectsInfo(
     Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
+void loadUserConfigs(Configurations& config);
 
 //test functions
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
 void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
+void testConfigClass(Configurations& config);
 
 int main() {
     cout << "place holder name" << endl;
@@ -35,13 +38,15 @@ int main() {
     //object declartions
     Ingredient flour, sugar, eggs, yeast, butter;
     Recipe conchas, cookies, donuts, muffins, roscas;
+    Configurations config;
 
     loadObjectsInfo(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
+    // loadUserConfigs(config);
 
     //test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
-    
+    testConfigClass(config);
 
     cout << endl << flour.getPrice() << endl;
    

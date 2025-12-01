@@ -1,5 +1,6 @@
 #include "Ingredients.h"
 #include "Recipe.h"
+#include "Configurations.h"
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -178,7 +179,36 @@ void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& mu
 
 }
 
-//void loadUserConfigs(){
-
-
-//}
+void loadUserConfigs(Configurations& config) {
+    ifstream configFile("config.txt");
+    
+    if (!configFile.is_open()) {
+        cout << "Config file not found. Starting with default margins." << endl;
+        return;
+    }
+    
+    vector<double>& margins = config.getMargins();
+    int expectedCount = margins.size();
+    int actualCount = 0;
+    
+    // Read only expected number of margins 
+    for (int i = 0; i < expectedCount; i++) {
+        if (configFile >> margins[i]) {
+            actualCount++;
+        } else {
+            break; // Stops if can't read any more numbers
+        }
+    }
+    
+    configFile.close();
+    
+    if (actualCount == expectedCount) {
+        cout << "Profit margins loaded." << endl;   // all margins found
+    } 
+    else if (actualCount > 0) {
+        cout << "Warning: Config file has less values then expected. Remaining margins use default margin." << endl; // Some margins found
+    } 
+    else {
+        cout << "Warning: Config file is empty or contains no valid numbers. Using default margins." << endl; //no margins found
+    }
+}
