@@ -28,6 +28,7 @@ public:
     // test functions
     vector<double>& getMargins();
     const int getMarginVectorSize();
+    const void displayMargin(int index);
 };
 
 #endif

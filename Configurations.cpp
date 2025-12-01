@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 // 0-5 is Conchas, Cookies, Donuts, Muffins, Roscas, Default
@@ -19,6 +20,8 @@ void Configurations::saveConfig() {
         return;
     }
     
+    configFile << fixed << setprecision(2);
+
     for (double margin : profitMargins) {
         configFile << margin << endl;
     }
@@ -51,4 +54,15 @@ vector<double>& Configurations::getMargins() {
 
 const int Configurations::getMarginVectorSize() {
     return profitMargins.size();
+}
+
+const void Configurations::displayMargin(int index) {
+    if (index < 0 || index >= profitMargins.size()) {
+        cout << "ERROR! Invalid index " << endl;
+        return;
+    }
+    string recipeNames[6] = {"Conchas", "Cookies", "Donuts", "Muffins", "Roscas", "Default"};
+    
+    cout << recipeNames[index] << ": " << fixed << setprecision(2)  << profitMargins[index] * 100 << "%";
+    
 }
