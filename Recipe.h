@@ -37,16 +37,22 @@ public:
     Recipe();
     Recipe(string name, double prepTime, double bakeTime, int batch, int yeild);
 
-    const string getRecName();
-    const double getPrepTime();
-    const double getBakeTime();
-    const int getBatchSize();
-    const int getYeildCount();
+    //getters
+    const string getRecName() const;
+    const double getPrepTime() const;
+    const double getBakeTime() const;
+    const int getBatchSize() const;
+    const int getYeildCount() const;
+    const double getTotalTime() const; 
+
+    //Functions
+    double getRC(const double ingredientPQg[5], const double ingredientsPP[5]) const; // gets the cost to make the recipe
+    
+
 
     //might need a print function too
+    //need a batch times yeild function for total count
 
-    const double getTotalTime(); 
-//need a batch times yeild function for total count
     vector<RecipeIngredients>& getIngredient();
 
     //for testing might need

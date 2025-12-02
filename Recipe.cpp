@@ -5,22 +5,24 @@
 using namespace std;
 
 // getters
-const string Recipe::getRecName() {
+const string Recipe::getRecName() const{
     return recName;
     }
-const double Recipe::getPrepTime() {
+const double Recipe::getPrepTime() const{
     return prepTime;
     }
-const double Recipe::getBakeTime() {
+const double Recipe::getBakeTime() const{
     return bakeTime;
     }
-const int Recipe::getBatchSize() {
+const int Recipe::getBatchSize() const{
     return batchSize;
     }
-const int Recipe::getYeildCount(){
+const int Recipe::getYeildCount() const{
    return yeildCount; 
 }
-
+const double Recipe::getTotalTime() const{
+    return prepTime + bakeTime;
+}
 
 //constructors 
 Recipe::Recipe(){
@@ -48,16 +50,45 @@ RecipeIngredients::RecipeIngredients(string n, double q, string u) {
     quantity = q;
     unit = u;    
 }
+
 //functions
-const double Recipe::getTotalTime() {
-        return prepTime + bakeTime;
+double Recipe::getRC(const double ingredientPQg[5], const double ingredientPP[5]) const{        //decide on what want dont really need loop since all ing same 0-4
+    const double LABOR_RATE_PER_HOUR = 18.0;  // $18 per hour
+    double totalIngredientCost = 0.0;
+    // need loop that does adds 5 IC then IC = (NQg/PQg)PP lastly add to 5IC labor which is TT * LABOR_RATE_PH or 18
+    // so loop in have ifs for each 5 then do IC calc last add LR       list index: 0=Flour, 1=Sugar, 2=Eggs, 3=Yeast, 4=Butter
+    for (const auto& recIng : Ingredient) {     //loops through each ingredient and does IC += (NQg/PQg)PP
+        if (recIng.name == "Flour" || recIng.name == "flour") {
+            totalIngredientCost += (recIng.quantity / ingredientPQg[0]) * ingredientPP[4];
+            }
+        else if (recIng.name == "Sugar" || recIng.name == "sugar") {
+            totalIngredientCost += (recIng.quantity / ingredientPQg[1]) * ingredientPP[4];
+            }
+        else if (recIng.name == "Eggs" || recIng.name == "eggs") {
+            totalIngredientCost += (recIng.quantity / ingredientPQg[2]) * ingredientPP[4];
+            }
+        else if (recIng.name == "Yeast"|| recIng.name == "yeast") {
+            totalIngredientCost += (recIng.quantity / ingredientPQg[3]) * ingredientPP[4];
+            }
+        else if (recIng.name == "Butter" || recIng.name == "butter") {
+            totalIngredientCost += (recIng.quantity / ingredientPQg[4]) * ingredientPP[4];
+            }
+    }  
+    double laborCost = getTotalTime() * LABOR_RATE_PER_HOUR;
+
+    // Total recipe cost = ingredient cost + labor cost
+    return totalIngredientCost + laborCost;
 }
+
+
 void Recipe::addIngredient(string name, double quantity, string unit) {
     Ingredient.push_back(RecipeIngredients( name, quantity, unit ));
 }
+
 vector<RecipeIngredients>& Recipe::getIngredient() {
     return Ingredient;
 }
 const int Recipe::getIngredientCount() {
     return Ingredient.size();
 }
+
