@@ -44,10 +44,11 @@ public:
     const int getBatchSize() const;
     const int getYeildCount() const;
     const double getTotalTime() const; 
+    const int getTotalCount() const; // just batch * yeild
 
     //Functions
     double getRC(const double ingredientPQg[5], const double ingredientsPP[5]) const; // gets the cost to make the recipe
-    
+    double getRR(const double ingredientPQg[5], const double ingredientPP[5], const double profitMargins[6]) const; // gets revenue for the recipe
 
 
     //might need a print function too

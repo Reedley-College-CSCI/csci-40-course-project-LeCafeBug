@@ -23,6 +23,9 @@ const int Recipe::getYeildCount() const{
 const double Recipe::getTotalTime() const{
     return prepTime + bakeTime;
 }
+const int Recipe::getTotalCount() const{
+    return batchSize * yeildCount; 
+}
 
 //constructors 
 Recipe::Recipe(){
@@ -80,6 +83,35 @@ double Recipe::getRC(const double ingredientPQg[5], const double ingredientPP[5]
     return totalIngredientCost + laborCost;
 }
 
+double Recipe::getRR(const double ingredientPQg[5], const double ingredientPP[5], const double profitMargins[6]) const {
+    // need (BY=count) (RC*(1+PM)) pm is the profit margin for recipes
+    double recipeCost = getRC(ingredientPQg, ingredientPP);
+
+    int marginIndex = 5;  // Default 5 for default margin
+    if (recName == "Conchas" || recName == "conchas") {
+        marginIndex = 0;
+        }
+    else if (recName == "Cookies" || recName == "cookies") {
+        marginIndex = 1;
+        }
+    else if (recName == "Donuts" || recName == "donuts") {
+        marginIndex = 2;
+        }
+    else if (recName == "Muffins" || recName == "muffins") {
+        marginIndex = 3;
+        }
+    else if (recName == "Roscas" || recName == "roscas") {
+        marginIndex = 4;
+        }
+
+    double profitMargin = profitMargins[marginIndex];
+    
+    double pricePerItem = recipeCost * (1.0 + profitMargin);
+    
+    // Total revenue: (Batch Size * Yield Count) (Recipe Cost (1 + profit margin))
+    return getTotalCount() * pricePerItem;
+    
+}
 
 void Recipe::addIngredient(string name, double quantity, string unit) {
     Ingredient.push_back(RecipeIngredients( name, quantity, unit ));
