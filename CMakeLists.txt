@@ -8,5 +8,6 @@ Recipe.cpp
 testingBranch.cpp 
 LoadObjectsInfo.cpp
 Configurations.cpp
+bizLogicCalcs.cpp
 
 )
