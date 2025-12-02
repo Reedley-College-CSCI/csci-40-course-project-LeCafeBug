@@ -26,6 +26,7 @@ void loadObjectsInfo(
     Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 void loadUserConfigs(Configurations& config);
+void createIngredientArrays(const Ingredient ingredients[5], double ingredientPQg[5], double ingredientPP[5]);
 
 //test functions
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
@@ -44,10 +45,16 @@ int main() {
     loadObjectsInfo(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
     loadUserConfigs(config);
 
-    //test functions
+    // Arrays 
+    Ingredient ingredients[5] = {flour, sugar, eggs, yeast, butter};
+    double ingredientPQg[5];  // Purchase Quantity in grams
+    double ingredientPP[5];   // Purchase Price
+
+    /*test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     testConfigClass(config);
+    */
 
     cout << endl << "DONE ALL" << endl;
    
