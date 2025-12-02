@@ -62,16 +62,16 @@ double Recipe::getRC(const double ingredientPQg[5], const double ingredientPP[5]
     // so loop in have ifs for each 5 then do IC calc last add LR       list index: 0=Flour, 1=Sugar, 2=Eggs, 3=Yeast, 4=Butter
     for (const auto& recIng : Ingredient) {     //loops through each ingredient and does IC += (NQg/PQg)PP
         if (recIng.name == "Flour" || recIng.name == "flour") {
-            totalIngredientCost += (recIng.quantity / ingredientPQg[0]) * ingredientPP[4];
+            totalIngredientCost += (recIng.quantity / ingredientPQg[0]) * ingredientPP[0];
             }
         else if (recIng.name == "Sugar" || recIng.name == "sugar") {
-            totalIngredientCost += (recIng.quantity / ingredientPQg[1]) * ingredientPP[4];
+            totalIngredientCost += (recIng.quantity / ingredientPQg[1]) * ingredientPP[1];
             }
         else if (recIng.name == "Eggs" || recIng.name == "eggs") {
-            totalIngredientCost += (recIng.quantity / ingredientPQg[2]) * ingredientPP[4];
+            totalIngredientCost += (recIng.quantity / ingredientPQg[2]) * ingredientPP[2];
             }
         else if (recIng.name == "Yeast"|| recIng.name == "yeast") {
-            totalIngredientCost += (recIng.quantity / ingredientPQg[3]) * ingredientPP[4];
+            totalIngredientCost += (recIng.quantity / ingredientPQg[3]) * ingredientPP[3];
             }
         else if (recIng.name == "Butter" || recIng.name == "butter") {
             totalIngredientCost += (recIng.quantity / ingredientPQg[4]) * ingredientPP[4];
@@ -83,7 +83,7 @@ double Recipe::getRC(const double ingredientPQg[5], const double ingredientPP[5]
     return totalIngredientCost + laborCost;
 }
 
-double Recipe::getRR(const double ingredientPQg[5], const double ingredientPP[5], const double profitMargins[6]) const {
+double Recipe::getRR(const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) const {
     // need (BY=count) (RC*(1+PM)) pm is the profit margin for recipes
     double recipeCost = getRC(ingredientPQg, ingredientPP);
 
@@ -111,6 +111,13 @@ double Recipe::getRR(const double ingredientPQg[5], const double ingredientPP[5]
     // Total revenue: (Batch Size * Yield Count) (Recipe Cost (1 + profit margin))
     return getTotalCount() * pricePerItem;
     
+}
+
+double Recipe::getRP(const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) const{
+    double recRevenue = getRR(ingredientPQg, ingredientPP, profitMargins);
+    double recCost = getRC(ingredientPQg, ingredientPP);
+    
+    return recRevenue - recCost;
 }
 
 void Recipe::addIngredient(string name, double quantity, string unit) {

@@ -8,9 +8,7 @@
  * 
  * clean up lines -====...
  * 
- * add test for create load and add/make config file
- * 
- * !!!need to fix abilty to use classes
+ * add test for new biz calcs
 */
 
 #include <iostream>
@@ -27,35 +25,47 @@ void loadObjectsInfo(
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 void loadUserConfigs(Configurations& config);
 void createIngredientArrays(const Ingredient ingredients[5], double ingredientPQg[5], double ingredientPP[5]);
+void calculateBusinessTotals(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins, 
+    double& totalCost, double& totalRevenue, double& totalProfit);
 
 //test functions
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
 void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 void testConfigClass(Configurations& config);
+void testCalculteTotal(double& totalCost, double& totalRevenue, double& totalProfit);
 
 int main() {
     cout << "place holder name" << endl;
     cout << "-==±==-∞-===±∆±===-∞-==±==-" << endl;
     
-    //object declartions
-    Ingredient flour, sugar, eggs, yeast, butter;
-    Recipe conchas, cookies, donuts, muffins, roscas;
+    //config declare and load
     Configurations config;
-
-    loadObjectsInfo(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
     loadUserConfigs(config);
 
-    // Arrays 
+    //ingredients and recipe object declare and load
+    Ingredient flour, sugar, eggs, yeast, butter;
+    Recipe conchas, cookies, donuts, muffins, roscas;
+    loadObjectsInfo(flour, sugar, eggs, yeast, butter, conchas, cookies, donuts, muffins, roscas);
+    
+    // Declare and load buissness logic calculations 
+  
     Ingredient ingredients[5] = {flour, sugar, eggs, yeast, butter};
     double ingredientPQg[5];  // Purchase Quantity in grams
     double ingredientPP[5];   // Purchase Price
+    createIngredientArrays(ingredients, ingredientPQg, ingredientPP);
+
+    Recipe recipes[5] = {conchas, cookies, donuts, muffins, roscas};
+    const vector<double>& profitMargins = config.getMargins();
+    double totalCost, totalRevenue, totalProfit;    
+    calculateBusinessTotals(recipes, ingredientPQg, ingredientPP, profitMargins, totalCost, totalRevenue, totalProfit);
 
     /*test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     testConfigClass(config);
     */
-
+    testCalculteTotal(totalCost, totalRevenue, totalProfit);
+    
     cout << endl << "DONE ALL" << endl;
    
     
