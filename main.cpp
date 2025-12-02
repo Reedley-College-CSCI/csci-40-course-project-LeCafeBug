@@ -63,9 +63,9 @@ int main() {
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     testConfigClass(config);
-    */
     testCalculteTotal(totalCost, totalRevenue, totalProfit);
-    
+    */
+
     cout << endl << "DONE ALL" << endl;
    
     

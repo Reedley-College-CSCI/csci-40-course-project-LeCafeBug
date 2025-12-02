@@ -119,14 +119,14 @@ void testConfigClass(Configurations& config) {
 
     cout << "- - Testing saveConfig - -" << endl;
     testConfig.saveConfig();
-    cout << "1st number and last number in congif file should be 0.05 and .45" << endl;
+    cout << "1st number and last number in config file should be 0.05 and .45" << endl;
     cout << endl;
     
     //place stop here and look at file 
 
     cout << "- - Undoing Save and Checking load- -" << endl;
     config.saveConfig();
-    cout << "1st number and last number in congif file should be .3 and .26" << endl;
+    cout << "1st number and last number in config file should be .3 and .26" << endl;
     cout << endl;    
     
     cout << "=≠= Testing for Config class done =≠=" << endl;

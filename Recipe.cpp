@@ -106,10 +106,8 @@ double Recipe::getRR(const double ingredientPQg[5], const double ingredientPP[5]
 
     double profitMargin = profitMargins[marginIndex];
     
-    double pricePerItem = recipeCost * (1.0 + profitMargin);
+    return recipeCost * (1.0 + profitMargin);
     
-    // Total revenue: (Batch Size * Yield Count) (Recipe Cost (1 + profit margin))
-    return getTotalCount() * pricePerItem;
     
 }
 
