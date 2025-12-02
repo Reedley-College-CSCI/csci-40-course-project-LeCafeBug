@@ -43,8 +43,8 @@ void loadIngredientsInfo(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,
         getline(ss, quantityStr, ',');
         getline(ss, unit, ',');
         
-        if (!name.empty() && name.back() == '\r') {
-            name.pop_back();
+        if (!unit.empty() && unit.back() == '\r') {
+            unit.pop_back();
             }
         //change from string to correct data type
         double price = stod(priceStr);
@@ -96,8 +96,8 @@ void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& mu
         getline(ss, yieldCountStr, ',');
 
         // Remove characters
-        if (!name.empty() && name.back() == '\r') {
-            name.pop_back();
+        if (!yieldCountStr.empty() && yieldCountStr.back() == '\r') {
+            yieldCountStr.pop_back();
             }
             
         //change from string to correct data type
@@ -148,8 +148,8 @@ void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& mu
         getline(ss, unit, ',');
 
         // Remove characters
-        if (!recipeName.empty() && recipeName.back() == '\r') {
-            recipeName.pop_back();
+        if (!unit.empty() && unit.back() == '\r') {
+            unit.pop_back();
             }
         //change from string to correct data type
         double quantityPR = stod(quantityStr);

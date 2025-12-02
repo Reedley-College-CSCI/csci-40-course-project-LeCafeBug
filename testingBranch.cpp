@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Ingredients.h"
 #include "Recipe.h"
 #include "Configurations.h"
@@ -129,4 +130,15 @@ void testConfigClass(Configurations& config) {
     cout << endl;    
     
     cout << "=≠= Testing for Config class done =≠=" << endl;
+}
+
+void testCalculteTotal(double& totalCost, double& totalRevenue, double& totalProfit){
+    cout << "=±= Testing calculate Total =±=" << endl << endl;
+
+    cout << fixed << setprecision(2);
+    cout << "Total Cost: $" << totalCost << endl;
+    cout << "Total Revenue: $" << totalRevenue << endl;
+    cout << "Total Profit: $" << totalProfit << endl;
+
+    cout << "=≠= Testing for calculating total done =≠=" << endl;
 }
