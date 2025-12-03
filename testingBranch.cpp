@@ -8,8 +8,8 @@ using namespace std;
 
 vector<Recipe> sortRecipesByCost(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5]);
 vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins);
+const Recipe* searchRecipeByName(const Recipe recipes[5], const string& target);
 
-//once file implemtntion need to add for this-
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter) {
     cout << "=±= Testing Ingredient Class =±=" << endl << endl;
     
@@ -174,4 +174,43 @@ void testSortingFunctions(const Recipe recipes[5], const double ingredientPQg[5]
     cout << endl;
     
     cout << "=≠= Testing Sorting Functions done =≠=" << endl;
+}
+
+void testSearchFunction(const Recipe recipes[5], const string& target) {
+    cout << "=±= Testing Search Function =±=" << endl << endl;
+    
+    // Test 1: Search for "CONCHAS" (all caps)
+    cout << "- - Searching for 'CONCHAS' - -" << endl;
+    const Recipe* result1 = searchRecipeByName(recipes, "CONCHAS");
+    if (result1 != nullptr) {
+        cout << "Found: " << result1->getRecName() << endl;
+        cout << "  Prep Time: " << result1->getPrepTime() << " hours" << endl;
+    } else {
+        cout << "Not found!" << endl;
+    }
+    cout << endl;
+    
+    // Test 2: Search for "DonUts" (mixed case)
+    cout << "- - Searching for 'DonUts' - -" << endl;
+    const Recipe* result2 = searchRecipeByName(recipes, "DonUts");
+    if (result2 != nullptr) {
+        cout << "Found: " << result2->getRecName() << endl;
+        cout << "  Prep Time: " << result2->getPrepTime() << " hours" << endl;
+    } else {
+        cout << "Not found!" << endl;
+    }
+    cout << endl;
+    
+    // Test 3: Search for "Cupcakes" (wrong name)
+    cout << "- - Searching for 'Cupcakes' - -" << endl;
+    const Recipe* result3 = searchRecipeByName(recipes, "Cupcakes");
+    if (result3 != nullptr) {
+        cout << "ERROR! Found 'Cupcakes'!" << endl;
+        cout << "  Found: " << result3->getRecName() << endl;
+    } else {
+        cout << "Not found" << endl;
+    }
+    cout << endl;
+
+    cout << "=±= Testing Search Done =±=" << endl;
 }
