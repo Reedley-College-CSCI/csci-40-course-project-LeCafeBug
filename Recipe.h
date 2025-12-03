@@ -50,7 +50,7 @@ public:
     double getRC(const double ingredientPQg[5], const double ingredientsPP[5]) const; // gets the cost to make the recipe
     double getRR(const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) const; // gets revenue for the recipe
     double getRP(const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) const; // gets profit for the recipe
-
+    const string getSuggestion(const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) const; // gets recipe suggestion
 
     //might need a print function too
     //need a batch times yeild function for total count

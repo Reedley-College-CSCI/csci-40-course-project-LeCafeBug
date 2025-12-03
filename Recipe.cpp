@@ -118,6 +118,26 @@ double Recipe::getRP(const double ingredientPQg[5], const double ingredientPP[5]
     return recRevenue - recCost;
 }
 
+const string Recipe::getSuggestion(const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) const {
+    double recipeProfit = getRP(ingredientPQg, ingredientPP, profitMargins);
+    
+    //thresholds for margin analysis
+    const double lowMargin = 20.0;   // $15 profit
+    const double highMargin = 40.0;   // $40 profit
+    
+    if (recipeProfit < lowMargin) {
+        return "Low Profit - Consider increasing price as at current cost the profit is minimal";
+    } 
+    else if (recipeProfit > highMargin) {
+        return "High Profit - Good margin but monitor market and consider decrease if low buy rate";
+    } 
+    else {
+        return "Good Profit - Healthy margin, no changes needed";
+    }
+}
+
+
+
 void Recipe::addIngredient(string name, double quantity, string unit) {
     Ingredient.push_back(RecipeIngredients( name, quantity, unit ));
 }
