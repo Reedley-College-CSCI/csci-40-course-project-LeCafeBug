@@ -27,12 +27,16 @@ void loadUserConfigs(Configurations& config);
 void createIngredientArrays(const Ingredient ingredients[5], double ingredientPQg[5], double ingredientPP[5]);
 void calculateBusinessTotals(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins, 
     double& totalCost, double& totalRevenue, double& totalProfit);
+vector<Recipe> sortRecipesByCost(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5]);
+vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins);
+
 
 //test functions
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
 void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 void testConfigClass(Configurations& config);
 void testCalculteTotal(double& totalCost, double& totalRevenue, double& totalProfit);
+void testSortingFunctions(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins);
 
 int main() {
     cout << "place holder name" << endl;
@@ -59,12 +63,28 @@ int main() {
     double totalCost, totalRevenue, totalProfit;    
     calculateBusinessTotals(recipes, ingredientPQg, ingredientPP, profitMargins, totalCost, totalRevenue, totalProfit);
 
+
+    
+    int n = 0;
+    
+    if (n = 1) {
+        vector<Recipe> sortedByCost = sortRecipesByCost(recipes, ingredientPQg, ingredientPP);
+    }
+    else if (n = 2 ) {
+        vector<Recipe> sortedByProfit = sortRecipesByProfit(recipes, ingredientPQg, ingredientPP, profitMargins);
+    }
+    
+    
+    
+    
     /*test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     testConfigClass(config);
     testCalculteTotal(totalCost, totalRevenue, totalProfit);
     */
+
+    testSortingFunctions(recipes, ingredientPQg, ingredientPP, profitMargins);
 
     cout << endl << "DONE ALL" << endl;
    

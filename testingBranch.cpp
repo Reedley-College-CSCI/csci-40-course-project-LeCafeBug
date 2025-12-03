@@ -6,6 +6,9 @@
 
 using namespace std;
 
+vector<Recipe> sortRecipesByCost(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5]);
+vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins);
+
 //once file implemtntion need to add for this-
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter) {
     cout << "=±= Testing Ingredient Class =±=" << endl << endl;
@@ -141,4 +144,34 @@ void testCalculteTotal(double& totalCost, double& totalRevenue, double& totalPro
     cout << "Total Profit: $" << totalProfit << endl;
 
     cout << "=≠= Testing for calculating total done =≠=" << endl;
+}
+
+void testSortingFunctions(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) {
+    cout << "=±= Testing Sorting Functions =±=" << endl << endl;
+    
+    cout << "- - Unsorted - -" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << recipes[i].getRecName() << endl;
+    }
+    cout << endl;
+    
+    // Test cost sorting
+    vector<Recipe> sortedByCost = sortRecipesByCost(recipes, ingredientPQg, ingredientPP);
+
+    cout << "- - Sorted by Cost - -" << endl;
+    for (const auto& recipe : sortedByCost) {
+        cout << recipe.getRecName() << endl;
+    }
+    cout << endl;
+    
+    // Test profit sorting  
+    
+    vector<Recipe> sortedByProfit = sortRecipesByProfit(recipes, ingredientPQg, ingredientPP, profitMargins);
+    cout << "- - Sorted by Profit - -" << endl;
+    for (const auto& recipe : sortedByProfit) {
+        cout << recipe.getRecName() << endl;
+    }
+    cout << endl;
+    
+    cout << "=≠= Testing Sorting Functions done =≠=" << endl;
 }

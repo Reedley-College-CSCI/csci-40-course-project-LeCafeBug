@@ -29,7 +29,6 @@ void calculateBusinessTotals(const Recipe recipes[5], const double ingredientPQg
     totalProfit = totalRevenue - totalCost;
     }
 
-
 //gets the total cost of all recipes 
 double getTC(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5]) {
     double totalCost = 0.0;
@@ -58,3 +57,65 @@ double getTP(const Recipe recipes[5], const double ingredientPQg[5], const doubl
 
     return totalRevenue - totalCost;
 }
+
+//sort a new vector of recipes by cost ( Lowest to Hightest)
+vector<Recipe> sortRecipesByCost(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5]) {
+    // make a copy of recipe array into a vector
+    vector<Recipe> sortedRecipes;
+    for (int i = 0; i < 5; i++) {
+        sortedRecipes.push_back(recipes[i]);
+    }
+    // Selection sorting 
+    int vectS = sortedRecipes.size();
+    for (int i = 0; i < vectS - 1; i++) {
+     
+        int minIndex = i;
+        double minCost = sortedRecipes[i].getRC(ingredientPQg, ingredientPP);
+        
+        for (int mi = i + 1; mi < vectS; mi++) {
+            double currentCost = sortedRecipes[mi].getRC(ingredientPQg, ingredientPP);
+            if (currentCost < minCost) {
+                minCost = currentCost;
+                minIndex = mi;
+            }
+        }
+        
+        if (minIndex != i) {
+            swap(sortedRecipes[i], sortedRecipes[minIndex]);
+        }
+    }
+    
+    return sortedRecipes;
+}
+
+//sort a new vector of recipes by profit (Highest to lowest)
+vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins) {
+    // make a copy of recipe array into a vector
+    vector<Recipe> sortedRecipes;
+    for (int i = 0; i < 5; i++) {
+        sortedRecipes.push_back(recipes[i]);
+    }
+    
+    // Selection sorting 
+    int vectS = sortedRecipes.size();
+    for (int i = 0; i < vectS - 1; i++) {
+        
+        int maxIndex = i;
+        double maxProfit = sortedRecipes[i].getRP(ingredientPQg, ingredientPP, profitMargins);
+        
+        for (int mi = i + 1; mi < vectS; mi++) {
+            double currentProfit = sortedRecipes[mi].getRP(ingredientPQg, ingredientPP, profitMargins);
+            if (currentProfit > maxProfit) {
+                maxProfit = currentProfit;
+                maxIndex = mi;
+            }
+        }
+        
+        if (maxIndex != i) {
+            swap(sortedRecipes[i], sortedRecipes[maxIndex]);
+        }
+    }
+    
+    return sortedRecipes;
+}
+
