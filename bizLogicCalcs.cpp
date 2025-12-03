@@ -119,3 +119,41 @@ vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredi
     return sortedRecipes;
 }
 
+//searchs for recipe and returns that recipe
+const Recipe* searchRecipeByName(const Recipe recipes[5], const string& target) {
+    string targetLower = target;
+    for (char& c : targetLower) {
+        c = tolower(c);
+    }
+    
+    for (int i = 0; i < 5; i++) {
+        string recipeNameLower = recipes[i].getRecName();
+        for (char& c : recipeNameLower) {
+            c = tolower(c);
+        }
+        
+        if (recipeNameLower == targetLower) {
+            return &recipes[i];
+        }
+    }
+    
+    return nullptr;  
+}
+
+const string getBusinessSuggestion(double totalProfit) {
+    double avgTotalProfit = totalProfit / 5.0;
+
+    // thresholds for total average margin analysis
+    const double lowMargin = 15.0;    
+    const double highMargin = 30.0;  
+    
+    if (avgTotalProfit < lowMargin) {
+        return "Business Profit: LOW - Consider adjusting profit margin as whole, as it stands average profit is low";
+    } 
+    else if (avgTotalProfit > highMargin) {
+        return "Business Profit: HIGH - Good margins, however montior market for product with low buy rate ";
+    } 
+    else {
+        return "Business Profit: GOOD - Stable average margins, no changes needed";
+    }
+}

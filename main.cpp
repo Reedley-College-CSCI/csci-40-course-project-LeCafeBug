@@ -29,7 +29,8 @@ void calculateBusinessTotals(const Recipe recipes[5], const double ingredientPQg
     double& totalCost, double& totalRevenue, double& totalProfit);
 vector<Recipe> sortRecipesByCost(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5]);
 vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins);
-
+const Recipe* searchRecipeByName(const Recipe recipes[5], const string& target);
+const string getBusinessSuggestion(double totalProfit);
 
 //test functions
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
@@ -37,6 +38,7 @@ void testRecipeClass(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& m
 void testConfigClass(Configurations& config);
 void testCalculteTotal(double& totalCost, double& totalRevenue, double& totalProfit);
 void testSortingFunctions(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], const vector<double>& profitMargins);
+void testSearchFunction(const Recipe recipes[5], const string& target);
 
 int main() {
     cout << "place holder name" << endl;
@@ -63,28 +65,35 @@ int main() {
     double totalCost, totalRevenue, totalProfit;    
     calculateBusinessTotals(recipes, ingredientPQg, ingredientPP, profitMargins, totalCost, totalRevenue, totalProfit);
 
+    string target;
 
+    // cin >> target;
+    
     
     int n = 0;
-    
+    vector<Recipe> sortedByProfit = sortRecipesByProfit(recipes, ingredientPQg, ingredientPP, profitMargins);    
+    vector<Recipe> sortedByCost = sortRecipesByCost(recipes, ingredientPQg, ingredientPP);
     if (n = 1) {
-        vector<Recipe> sortedByCost = sortRecipesByCost(recipes, ingredientPQg, ingredientPP);
+        cout << sortedByCost[0].getRecName();
     }
     else if (n = 2 ) {
-        vector<Recipe> sortedByProfit = sortRecipesByProfit(recipes, ingredientPQg, ingredientPP, profitMargins);
+        cout << sortedByProfit[0].getRecName();
+    }
+    else {
+        cout << "error";
     }
     
-    
-    
+    string mostProfitable = sortedByProfit[0].getRecName();
     
     /*test functions
     testIngredientClass(flour, sugar, eggs, yeast, butter);
     testRecipeClass(conchas, cookies, donuts, muffins, roscas);
     testConfigClass(config);
     testCalculteTotal(totalCost, totalRevenue, totalProfit);
-    */
-
     testSortingFunctions(recipes, ingredientPQg, ingredientPP, profitMargins);
+    */
+    testSearchFunction(recipes, target );
+
 
     cout << endl << "DONE ALL" << endl;
    
