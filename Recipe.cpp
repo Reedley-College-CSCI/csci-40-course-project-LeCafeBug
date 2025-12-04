@@ -122,8 +122,8 @@ const string Recipe::getSuggestion(const double ingredientPQg[5], const double i
     double recipeProfit = getRP(ingredientPQg, ingredientPP, profitMargins);
     
     //thresholds for margin analysis
-    const double lowMargin = 20.0;   // $15 profit
-    const double highMargin = 40.0;   // $40 profit
+    const double lowMargin = 17.0;   // $17 profit
+    const double highMargin = 30.0;   // $30 profit
     
     if (recipeProfit < lowMargin) {
         return "Low Profit - Consider increasing price as at current cost the profit is minimal";

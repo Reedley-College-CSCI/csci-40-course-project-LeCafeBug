@@ -1,0 +1,87 @@
+=========================================
+      TOTAL BUSINESS REPORT
+=========================================
+
+Profit Margins of:
+
+Conchas: 47.00%
+Cookies: 39.00%
+Donuts: 32.00%
+Muffins: 28.00%
+Roscas: 35.00%
+Default: 40.00%
+
+---------------------------------
+Business Summary:
+---------------------------------
+ Total Cost: $194.68
+ Total Revenue: $266.20
+ Total Profits: $71.52
+ Average Profit per Recipe: $14.30
+
+Overall Suggestion:
+ Business Profit: LOW - Consider adjusting profit margin as whole, as it stands average profit is low
+
+---------------------------------
+Most Profitable Recipe: Roscas
+Least Profitable Recipe: Donuts
+
+Least Costly Recipe: Donuts
+Most Costly Recipe: Roscas
+---------------------------------
+
+Individual Recipe Analysis:
+============================
+Conchas:
+
+ Suggestion: 
+ Good Profit - Healthy margin, no changes needed
+
+  Cost: $44.78
+  Revenue: $65.82
+  Profit: $21.05
+  Margin: 47.00%
+ --- --- --- 
+Cookies:
+
+ Suggestion: 
+ Low Profit - Consider increasing price as at current cost the profit is minimal
+
+  Cost: $32.29
+  Revenue: $44.88
+  Profit: $12.59
+  Margin: 39.00%
+ --- --- --- 
+Donuts:
+
+ Suggestion: 
+ Low Profit - Consider increasing price as at current cost the profit is minimal
+
+  Cost: $14.36
+  Revenue: $18.96
+  Profit: $4.60
+  Margin: 32.00%
+ --- --- --- 
+Muffins:
+
+ Suggestion: 
+ Low Profit - Consider increasing price as at current cost the profit is minimal
+
+  Cost: $40.79
+  Revenue: $52.21
+  Profit: $11.42
+  Margin: 28.00%
+ --- --- --- 
+Roscas:
+
+ Suggestion: 
+ Good Profit - Healthy margin, no changes needed
+
+  Cost: $62.47
+  Revenue: $84.33
+  Profit: $21.86
+  Margin: 35.00%
+ --- --- --- 
+=========================================
+           End of Report
+=========================================
