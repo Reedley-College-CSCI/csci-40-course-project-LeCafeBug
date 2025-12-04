@@ -91,6 +91,7 @@ int main() {
         cout << "If you want to save this data, copy it else where" << endl << endl;
         cout << "Press Enter to continue (and DELETE file content)..." << endl;
         cin.get();  // Wait for user to press Enter
+        cin.ignore(1000, '\n');
         cout << "Deleting old report data..." << endl << endl;
     }
     // Clear output file
@@ -104,20 +105,27 @@ int main() {
     bool exitProgram = false;
     while (!exitProgram) {          // allows the user to do single recipe analysis multiple times
 
-    cout << "---------------------------------" << endl;
-    cout << "  MAIN MENU: Enter 1-3" << endl;
-    cout << "---------------------------------" << endl;
-    cout << "1. Single Recipe Analysis" << endl;
-    cout << "2. Total Business Analysis" << endl;
-    cout << "3. Exit Program" << endl;
-    cout << "---------------------------------" << endl;
+        cout << "---------------------------------" << endl;
+        cout << "  MAIN MENU: Enter 1-3" << endl;
+        cout << "---------------------------------" << endl;
+        cout << "1. Single Recipe Analysis" << endl;
+        cout << "2. Total Business Analysis" << endl;
+        cout << "3. Exit Program" << endl;
+        cout << "---------------------------------" << endl;
 
-    int choice;
-    cout << "Enter your choice (1-3): ";
-    cin >> choice;
-    cin.ignore();      
-    cout << endl;
+        int choice;
+        cout << "Enter your choice (1-3): ";
         
+        do{
+            cin >> choice;
+            if (choice < 1 || choice > 3){
+            cout << "Invalid choice! Please enter 1, 2, or 3: ";
+            }
+            cin.clear();
+            cin.ignore(1000, '\n');
+        } while (choice < 1 || choice > 3);
+
+        cout << endl;
         switch(choice) {
             case 1:
                 // Single recipe analysis
@@ -136,13 +144,13 @@ int main() {
                 break;
             default:
                 cout << "Invalid choice! Please enter 1, 2, or 3." << endl;
-                cout << endl;
         }
-        //pasue before main menu re appears
+        //pause before main menu reappears
         if (!exitProgram && choice != 2) {
             cout << endl;
             cout << "Press Enter to return to main menu...";
-            cin.ignore();
+            cin.get();
+            cin.ignore(1000, '\n');
             cout << endl;
         }
     }
@@ -315,14 +323,23 @@ void singleRecipeAnalysis(Recipe recipes[5], const double ingredientPQg[5], cons
     
     cout << "Enter the recipe name youd like to see" << endl;
     cout << " (as shown above): ";
-    getline(cin, recipeName);
-    
-    // Search for recipe using existing function
-    const Recipe* foundRecipe = searchRecipeByName(recipes, recipeName);
-    if (foundRecipe == nullptr) {
-        cout << "Recipe not found! Please try again." << endl;
-        return;
-    }
+    const Recipe* foundRecipe = nullptr;
+    do{
+        getline(cin, recipeName);
+        
+        //incase user inputs number instead of name
+        if (recipeName == "1") {recipeName = recipes[0].getRecName();} 
+        if (recipeName == "2") {recipeName = recipes[1].getRecName();}
+        if (recipeName == "3") {recipeName = recipes[2].getRecName();}
+        if (recipeName == "4") {recipeName = recipes[3].getRecName();} 
+        if (recipeName == "5") {recipeName = recipes[4].getRecName();}
+
+        // Search for recipe using existing function
+        foundRecipe = searchRecipeByName(recipes, recipeName);
+        if (foundRecipe == nullptr) {
+            cout << "Recipe not found! Please try again." << endl;
+        }
+    } while (foundRecipe == nullptr);
     
     cout << endl;
     cout << "Selected Recipe: " << foundRecipe->getRecName() << endl;
@@ -336,53 +353,62 @@ void singleRecipeAnalysis(Recipe recipes[5], const double ingredientPQg[5], cons
     cout << "Enter your choice (1-3): ";
     
     int marginChoice;
-    cin >> marginChoice;
-    cin.ignore();
-    
     double margin = 0.0;
     bool useCustomMargin = false;
-    
+    do{
+        cin >> marginChoice;
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+        if (marginChoice < 1 || marginChoice > 3) {
+            cout << "Invalid margin! Please try again." << endl;
+        }
+
+    } while (marginChoice < 1 || marginChoice > 3);
+        
     switch(marginChoice) {
         case 1: // saved margin
             {
-                int marginIndex = 5;
-                string recName = foundRecipe->getRecName();
-                
-                if (recName == "Conchas" || recName == "conchas") { marginIndex = 0; }
-                else if (recName == "Cookies" || recName == "cookies") { marginIndex = 1; }
-                else if (recName == "Donuts" || recName == "donuts") { marginIndex = 2; }
-                else if (recName == "Muffins" || recName == "muffins") { marginIndex = 3; } 
-                else if (recName == "Roscas" || recName == "roscas") { marginIndex = 4; }
-                
-                margin = config.getMargins()[marginIndex];
-                cout << "Using saved margin: " << fixed << setprecision(2) << margin * 100 << "%" << endl;
+            int marginIndex = 5;
+            string recName = foundRecipe->getRecName();
+        
+            if (recName == "Conchas" || recName == "conchas") { marginIndex = 0; }
+            else if (recName == "Cookies" || recName == "cookies") { marginIndex = 1; }
+            else if (recName == "Donuts" || recName == "donuts") { marginIndex = 2; }
+            else if (recName == "Muffins" || recName == "muffins") { marginIndex = 3; } 
+            else if (recName == "Roscas" || recName == "roscas") { marginIndex = 4; }
+
+            margin = config.getMargins()[marginIndex];
+            cout << "Using saved margin: " << fixed << setprecision(2) << margin * 100 << "%" << endl;
             }
             break;
 
         case 2: // default margin
+            {
             margin = 0.25;
             cout << "Using default margin: 25%" << endl;
+            }
             break;
 
         case 3: // custom margin
+            {    
             useCustomMargin = true;
             cout << "Enter custom profit margin (1-100%): ";
-            cin >> margin;
-            cin.ignore();
-            
-            if (margin < 1 || margin > 100) {
-                cout << "Invalid margin! Please try again." << endl;
+            do{
                 cin >> margin;
-                cin.ignore();
-            }
+                cin.clear();
+                cin.ignore(1000, '\n');
 
+                if (margin < 1 || margin > 100) {
+                    cout << "Invalid margin! Please try again." << endl;
+                    }
+            } while (margin < 1 || margin > 100);
             margin = margin / 100.0;
+            }
             break;
 
         default:
             cout << "Invalid choice! Try again" << endl;
-            cin >> marginChoice;
-            cin.ignore();
     }
     
     // Generates report
@@ -412,10 +438,12 @@ void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const doubl
     vector<double>& margins = config.getMargins();
     
     double globalMargin;
+    cout << "Enter global profit margin for all recipes (1-100%): ";    
+    
     do{
-        cout << "Enter global profit margin for all recipes (1-100%): ";
         cin >> globalMargin;
-        cin.ignore();
+        cin.clear();
+        cin.ignore(1000, '\n');
     
         if (globalMargin < 1 || globalMargin > 100) {
             cout << "Invalid margin! Try again." << endl;
@@ -425,19 +453,27 @@ void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const doubl
     margins[5] = globalMargin / 100.0; // Default margin
     
     cout << endl;
-    cout << "Global margin set to: " << fixed << setprecision(2) << globalMargin * 100 << "%" << endl;
+    cout << "Global margin set to: " << fixed << setprecision(2) << globalMargin << "%" << endl;
     cout << endl;
     
     // Ask about custom individual recipes
     cout << "Do you want to customize margins for individual recipes? (y/n): ";
     char customizeChoice;
-    cin >> customizeChoice;
-    cin.ignore();
+    do{
+        cin >> customizeChoice;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        customizeChoice = tolower(customizeChoice);
+        
+        if (customizeChoice != 'y' && customizeChoice != 'n') 
+            {cout << "Invalid! try again." << endl;}
+
+    } while (customizeChoice != 'y' && customizeChoice != 'n');
     
     if (tolower(customizeChoice) == 'y') {
 
         cout << endl;
-        // list of options to costumize from
+        // list of options to customize from
         displayRecipeList(recipes);
         cout << "6. Default" << endl;
         cout << "0. Done customizing" << endl;
@@ -447,8 +483,16 @@ void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const doubl
             
             cout << "Select recipe to customize (0-6): ";
             int recipeChoice;
-            cin >> recipeChoice;
-            cin.ignore();
+            
+            do {
+                cin >> recipeChoice;
+                cin.clear();
+                cin.ignore(1000, '\n');
+                if (recipeChoice < 0 || recipeChoice > 6 ) {
+                    cout << "Invalid choice! Please select 0-6." << endl;
+                }
+            } while (recipeChoice < 0 || recipeChoice > 6 );
+
             
             if (recipeChoice == 0) {
                 continueCustomizing = false;
@@ -466,7 +510,8 @@ void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const doubl
 
                 do{
                     cin >> customMargin;
-                    cin.ignore();
+                    cin.clear();
+                    cin.ignore(1000, '\n');
                 
                     // Validate and set custom margin
                     if (customMargin >= 1 && customMargin <= 100) {
@@ -477,8 +522,9 @@ void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const doubl
                         cout << "Invalid margin! Try again." << endl;
                     }
 
-                } while (globalMargin < 1 || globalMargin > 100); 
-            } else {
+                } while (customMargin < 1 || customMargin > 100); 
+            } 
+            else {
                 cout << "Invalid choice! Please select 0-6." << endl;
             }
         }

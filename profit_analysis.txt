@@ -1,87 +1,54 @@
-=========================================
-      TOTAL BUSINESS REPORT
-=========================================
+---------------------------------
+  Conchas ANALYSIS
+---------------------------------
+Profit Margin Information:
+ - Margin: 30.00%
 
-Profit Margins of:
+Business Suggestion:
+  Low Profit - Consider increasing price as at current cost the profit is minimal
 
-Conchas: 47.00%
-Cookies: 39.00%
-Donuts: 32.00%
-Muffins: 28.00%
-Roscas: 35.00%
-Default: 40.00%
+Financial Analysis:
+  Total Cost: $44.78
+  Total Revenue: $58.21
+  Total Profit: $13.43
+  Profit per Unit: $0.56
 
 ---------------------------------
-Business Summary:
----------------------------------
- Total Cost: $194.68
- Total Revenue: $266.20
- Total Profits: $71.52
- Average Profit per Recipe: $14.30
-
-Overall Suggestion:
- Business Profit: LOW - Consider adjusting profit margin as whole, as it stands average profit is low
+Recipe Details:
+  Preparation Time: 0.30 hours
+  Baking Time: 2.00 hours
+  Total Time: 2.30 hours
+  Batch Size: 3 batches
+  Yield per Batch: 8 units
+  Total: 24 units
 
 ---------------------------------
-Most Profitable Recipe: Roscas
-Least Profitable Recipe: Donuts
-
-Least Costly Recipe: Donuts
-Most Costly Recipe: Roscas
+     End of Report 
 ---------------------------------
+---------------------------------
+  Cookies ANALYSIS
+---------------------------------
+Profit Margin Information:
+ - Margin: 25.00%
 
-Individual Recipe Analysis:
-============================
-Conchas:
+Business Suggestion:
+  Low Profit - Consider increasing price as at current cost the profit is minimal
 
- Suggestion: 
- Good Profit - Healthy margin, no changes needed
+Financial Analysis:
+  Total Cost: $32.29
+  Total Revenue: $40.36
+  Total Profit: $8.07
+  Profit per Unit: $0.34
 
-  Cost: $44.78
-  Revenue: $65.82
-  Profit: $21.05
-  Margin: 47.00%
- --- --- --- 
-Cookies:
+---------------------------------
+Recipe Details:
+  Preparation Time: 0.40 hours
+  Baking Time: 1.20 hours
+  Total Time: 1.60 hours
+  Batch Size: 2 batches
+  Yield per Batch: 12 units
+  Total: 24 units
 
- Suggestion: 
- Low Profit - Consider increasing price as at current cost the profit is minimal
-
-  Cost: $32.29
-  Revenue: $44.88
-  Profit: $12.59
-  Margin: 39.00%
- --- --- --- 
-Donuts:
-
- Suggestion: 
- Low Profit - Consider increasing price as at current cost the profit is minimal
-
-  Cost: $14.36
-  Revenue: $18.96
-  Profit: $4.60
-  Margin: 32.00%
- --- --- --- 
-Muffins:
-
- Suggestion: 
- Low Profit - Consider increasing price as at current cost the profit is minimal
-
-  Cost: $40.79
-  Revenue: $52.21
-  Profit: $11.42
-  Margin: 28.00%
- --- --- --- 
-Roscas:
-
- Suggestion: 
- Good Profit - Healthy margin, no changes needed
-
-  Cost: $62.47
-  Revenue: $84.33
-  Profit: $21.86
-  Margin: 35.00%
- --- --- --- 
-=========================================
-           End of Report
-=========================================
+---------------------------------
+     End of Report 
+---------------------------------
