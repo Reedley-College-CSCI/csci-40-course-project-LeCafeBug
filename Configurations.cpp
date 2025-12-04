@@ -30,8 +30,7 @@ void Configurations::saveConfig() {
     cout << "Profit margins saved." << endl;
 }
 
-void Configurations::setMargin(int index, double newMargin) {
-    newMargin = newMargin/100; 
+void Configurations::setMargin(int index, double newMargin) { 
 
     if (index >= 0 && index < TOTAL_CONFIGS) {
 
@@ -61,8 +60,8 @@ const void Configurations::displayMargin(int index) {
         cout << "ERROR! Invalid index " << endl;
         return;
     }
-    string recipeNames[6] = {"Conchas", "Cookies", "Donuts", "Muffins", "Roscas", "Default"};
+    string marginRecNames[6] = {"Conchas", "Cookies", "Donuts", "Muffins", "Roscas", "Default"};
     
-    cout << recipeNames[index] << ": " << fixed << setprecision(2)  << profitMargins[index] * 100 << "%";
+    cout << marginRecNames[index] << ": " << fixed << setprecision(2)  << profitMargins[index] * 100 << "%";
     
 }
