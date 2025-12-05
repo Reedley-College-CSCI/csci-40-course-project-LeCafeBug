@@ -8,8 +8,7 @@ using namespace std;
 /*
  * Description:
  * This class mananages all user congfigurations. It contains a vector of numbers that come from the config.txt file.
- * It allow the program to set, get, and save margins for the 5 recipes as well as a default margin.
- * 
+ * It allow the program to set, get, and save margins for the 5 recipes as well as a default margin incase its needed.
  */
 
 class Configurations {
@@ -19,6 +18,7 @@ private:
     const int TOTAL_CONFIGS = NUM_RECIPES + 1;  // recipes + default
     
 public:
+    // Constructor
     Configurations();
     
     // Core functions

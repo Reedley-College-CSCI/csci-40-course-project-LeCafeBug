@@ -11,7 +11,7 @@ using namespace std;
 void loadIngredientsInfo(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
 void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas);
 
-
+// This function both load recipes and ingrediant functions so that only function needs to be in main
 void loadObjectsInfo(
     Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter,
     Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas)
@@ -22,6 +22,7 @@ void loadObjectsInfo(
     cout << "Ingrediant and Recipe data loaded." << endl << endl;
 }
 
+// loads ingredient info from the Ingredient.csv file into the recpective object 
 void loadIngredientsInfo(Ingredient& flour, Ingredient& sugar, Ingredient& eggs, Ingredient& yeast, Ingredient& butter){
   //Ingredient objects
     ifstream ingredientsFile("Ingredients.csv");
@@ -72,7 +73,7 @@ void loadIngredientsInfo(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,
     }
     ingredientsFile.close();
 }
-
+// loads recipe info from the Recipe.csv and Recipe.Ingredient.csv into its recpective object
 void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& muffins, Recipe& roscas){
   //Recipe objects
     ifstream recipesFile("Recipes.csv");
@@ -178,7 +179,7 @@ void loadRecipeInfo(Recipe& conchas, Recipe& cookies, Recipe& donuts, Recipe& mu
     recipeIngredientsFile.close();
 
 }
-
+// load user configs fom config.txt into a config file.
 void loadUserConfigs(Configurations& config) {
     ifstream configFile("config.txt");
     

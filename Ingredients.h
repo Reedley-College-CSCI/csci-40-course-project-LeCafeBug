@@ -7,9 +7,10 @@ using namespace std;
 
 /*
  *  Description:
- * This class is used for every ingredient found in its matching file Ingredients.cvs
- * to store and get the name, price, quantity, unit, as well as caculate and get
- * the cost per unit of the ingredient
+ * This class is used for ingredients that come from the file Ingredients.cvs.
+ * It stores and get the name, price, quantity, and unit fromt his file.
+ * It also calculates things based of this info like the the cost per unit and 
+ * the purchase quantity in grams.
 */
 
 class Ingredient {            
@@ -33,7 +34,7 @@ public:
     const string getUnit() const;
 
     const double getPQg()const;  // PQg means → Purchase Quantity in grams
-    const double getPP() const;   // PP means → Purchase Price 
+    const double getPP() const;   // PP means → Purchase Price -Unnessery as getPrice already exist 
 
     //might need a print function 
 

@@ -3,12 +3,12 @@
 
 /* 
  * Description:
- *
- * Add instruciton on how to open with CMake
+ * This is the core of the program. It houses the various function protypes needed here that arent in a .h file.
+ * These include the functions that load inforamtion, fetch information from this info, and do the searching and sorting.
  * 
- * clean up lines -====...
- * 
- * add test for new biz calcs
+ * More importantly it houses the menus, with the main menu in the int main and the functions that 
+ * display the single and total analysis menus. Along with the menus it has the functions that generates both
+ * analysis and out put them to the txt file. 
 */
 
 #include <iostream>
@@ -33,13 +33,14 @@ vector<Recipe> sortRecipesByProfit(const Recipe recipes[5], const double ingredi
 const Recipe* searchRecipeByName(const Recipe recipes[5], const string& target);
 const string getBusinessSuggestion(double totalProfit);
 
+// user interface and report generators fucntions 
 void displayRecipeList(const Recipe recipes[5]);
 void generateSingleRecipeReport(const Recipe* recipe, const double ingredientPQg[5], const double ingredientPP[5], 
     double margin, bool useCustomMargin, ofstream& reportFile);
 void generateTotalAnalysisReport(const Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], 
     const vector<double>& profitMargins, ofstream& reportFile);
-void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config);
-void singleRecipeAnalysis(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config);
+void totalAnalysisMenu(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config);
+void singleRecipeAnalysisMenu(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config);
 
 //test functions
 void testIngredientClass(Ingredient& flour, Ingredient& sugar, Ingredient& eggs,Ingredient& yeast, Ingredient& butter);
@@ -129,11 +130,11 @@ int main() {
         switch(choice) {
             case 1:
                 // Single recipe analysis
-                singleRecipeAnalysis(recipes, ingredientPQg, ingredientPP, config);
+                singleRecipeAnalysisMenu(recipes, ingredientPQg, ingredientPP, config);
                 break;
             case 2:
                 // Total business analysis (exits after)
-                totalAnalysis(recipes, ingredientPQg, ingredientPP, config);
+                totalAnalysisMenu(recipes, ingredientPQg, ingredientPP, config);
                 choice = 3;
                 break;
             case 3:
@@ -312,7 +313,7 @@ void generateTotalAnalysisReport(const Recipe recipes[5], const double ingredien
 }
 
 // function that runs when choosing to only do a single recipe analysis 
-void singleRecipeAnalysis(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config) {
+void singleRecipeAnalysisMenu(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config) {
     cout << endl;
     cout << "=========================================" << endl;
     cout << "        SINGLE RECIPE ANALYSIS" << endl;
@@ -430,7 +431,7 @@ void singleRecipeAnalysis(Recipe recipes[5], const double ingredientPQg[5], cons
 }
 
 // function that runs when choosing to run a full analysis of all recipes
-void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config) {
+void totalAnalysisMenu(Recipe recipes[5], const double ingredientPQg[5], const double ingredientPP[5], Configurations& config) {
     cout << "=========================================" << endl;
     cout << "        TOTAL BUSINESS ANALYSIS" << endl;
     cout << "=========================================" << endl;

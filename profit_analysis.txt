@@ -1,25 +1,25 @@
 ---------------------------------
-  Conchas ANALYSIS
+  Cookies ANALYSIS
 ---------------------------------
 Profit Margin Information:
- - Margin: 12.00%
+ - Custom margin: 98.00%
 
 Business Suggestion:
-  Low Profit - Consider increasing price as at current cost the profit is minimal
+  High Profit - Good margin but monitor market and consider decrease if low buy rate
 
 Financial Analysis:
-  Total Cost: $44.78
-  Total Revenue: $50.15
-  Total Profit: $5.37
-  Profit per Unit: $0.22
+  Total Cost: $32.29
+  Total Revenue: $63.93
+  Total Profit: $31.64
+  Profit per Unit: $1.32
 
 ---------------------------------
 Recipe Details:
-  Preparation Time: 0.30 hours
-  Baking Time: 2.00 hours
-  Total Time: 2.30 hours
-  Batch Size: 3 batches
-  Yield per Batch: 8 units
+  Preparation Time: 0.40 hours
+  Baking Time: 1.20 hours
+  Total Time: 1.60 hours
+  Batch Size: 2 batches
+  Yield per Batch: 12 units
   Total: 24 units
 
 ---------------------------------
@@ -31,27 +31,27 @@ Recipe Details:
 
 Profit Margins of:
 
-Conchas: 12.00%
-Cookies: 100.00%
-Donuts: 100.00%
-Muffins: 100.00%
-Roscas: 23.00%
-Default: 20.00%
+Conchas: 23.00%
+Cookies: 40.00%
+Donuts: 32.00%
+Muffins: 56.00%
+Roscas: 35.00%
+Default: 78.00%
 
 ---------------------------------
 Business Summary:
 ---------------------------------
  Total Cost: $194.68
- Total Revenue: $301.86
- Total Profits: $107.18
- Average Profit per Recipe: $21.44
+ Total Revenue: $267.20
+ Total Profits: $72.52
+ Average Profit per Recipe: $14.50
 
 Overall Suggestion:
- Business Profit: GOOD - Stable average margins, no changes needed
+ Business Profit: LOW - Consider adjusting profit margin as whole, as it stands average profit is low
 
 ---------------------------------
 Most Profitable Recipe: Muffins
-Least Profitable Recipe: Conchas
+Least Profitable Recipe: Donuts
 
 Least Costly Recipe: Donuts
 Most Costly Recipe: Roscas
@@ -64,45 +64,45 @@ Conchas:
  Low Profit - Consider increasing price as at current cost the profit is minimal
 
   Cost: $44.78
-  Revenue: $50.15
-  Profit: $5.37
-  Margin: 12.00%
+  Revenue: $55.08
+  Profit: $10.30
+  Margin: 23.00%
  --- --- --- 
 Cookies:
  Suggestion: 
- High Profit - Good margin but monitor market and consider decrease if low buy rate
+ Low Profit - Consider increasing price as at current cost the profit is minimal
 
   Cost: $32.29
-  Revenue: $64.57
-  Profit: $32.29
-  Margin: 100.00%
+  Revenue: $45.20
+  Profit: $12.91
+  Margin: 40.00%
  --- --- --- 
 Donuts:
  Suggestion: 
  Low Profit - Consider increasing price as at current cost the profit is minimal
 
   Cost: $14.36
-  Revenue: $28.72
-  Profit: $14.36
-  Margin: 100.00%
+  Revenue: $18.96
+  Profit: $4.60
+  Margin: 32.00%
  --- --- --- 
 Muffins:
  Suggestion: 
- High Profit - Good margin but monitor market and consider decrease if low buy rate
+ Good Profit - Healthy margin, no changes needed
 
   Cost: $40.79
-  Revenue: $81.58
-  Profit: $40.79
-  Margin: 100.00%
+  Revenue: $63.63
+  Profit: $22.84
+  Margin: 56.00%
  --- --- --- 
 Roscas:
  Suggestion: 
- Low Profit - Consider increasing price as at current cost the profit is minimal
+ Good Profit - Healthy margin, no changes needed
 
   Cost: $62.47
-  Revenue: $76.84
-  Profit: $14.37
-  Margin: 23.00%
+  Revenue: $84.33
+  Profit: $21.86
+  Margin: 35.00%
  --- --- --- 
 =========================================
            End of Report
