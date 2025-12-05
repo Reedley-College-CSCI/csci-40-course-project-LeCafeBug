@@ -90,7 +90,7 @@ int main() {
         cout << "This program will DELETE all content in the file." << endl;
         cout << "If you want to save this data, copy it else where" << endl << endl;
         cout << "Press Enter to continue (and DELETE file content)..." << endl;
-        cin.get();  // Wait for user to press Enter
+        // Wait for user to press Enter
         cin.ignore(1000, '\n');
         cout << "Deleting old report data..." << endl << endl;
     }
@@ -146,10 +146,10 @@ int main() {
                 cout << "Invalid choice! Please enter 1, 2, or 3." << endl;
         }
         //pause before main menu reappears
-        if (!exitProgram && choice != 2) {
+        if (!exitProgram) {
             cout << endl;
             cout << "Press Enter to return to main menu...";
-            cin.get();
+            
             cin.ignore(1000, '\n');
             cout << endl;
         }
@@ -535,7 +535,7 @@ void totalAnalysis(Recipe recipes[5], const double ingredientPQg[5], const doubl
     config.saveConfig();
     
     // Generate total analysis report
-    ofstream reportFile("profit_analysis.txt");
+    ofstream reportFile("profit_analysis.txt", ios::app);
     if (!reportFile.is_open()) {
         cout << "ERROR! Cannot find report file!" << endl;
         exit(1);
