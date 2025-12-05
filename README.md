@@ -1,6 +1,32 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/7mdzU3H2)
 # CS1 Final Project - Bakery Recipe Analyser 
 
+## 0. How to compile and run:
+
+### - Use g++ : 
+1. Copy and paste this into terminal:
+g++ main.cpp Ingredients.cpp Recipe.cpp testingBranch.cpp LoadObjectsInfo.cpp Configurations.cpp bizLogicCalcs.cpp -o myprogram
+
+### - Use Visual Studio with CMake:
+
+2022 version
+ 1. Open folder in Visual studio
+ 2. It should detect CMakeLists.txt automatically
+ 3. Select "myprogram" as startup item
+ 4. Build and run
+
+2019 version
+ 1. File → Open → CMake → Select CMakeLists.txt
+ 2. Select "myprogram.exe" from startup dropdown  
+ 3. Build and run
+
+### - Use CMake:
+ 1. Open terminal/command prompt
+ 2. cmake -S . -B build/
+ 3. cmake --build build/
+ 4. Run: build\myprogram.exe (Windows)
+       * Using linux or mac no .exe
+        
 ## 1. Overview
 - What problem does your project solve?  
 - Briefly describe the purpose and key features of your program.  
